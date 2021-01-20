@@ -3,8 +3,8 @@ import BaseStepper from '@material-ui/core/Stepper';
 import Step from '@material-ui/core/Step';
 import StepContent from '@material-ui/core/StepContent';
 import StepLabel from '@material-ui/core/StepLabel';
-import { useWindowSize } from './use-window.hook';
 import { useTranslation } from 'react-i18next';
+import { useWindowSize } from './use-window.hook';
 
 const Stepper = ({ stepLabels, step = 0, children }) => {
     const [activeStep, setActiveStep] = React.useState(step);
