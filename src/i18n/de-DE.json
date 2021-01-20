@@ -1,1 +1,17 @@
-{}
+{
+    "email": {
+        "step": "",
+        "invalid": "",
+        "title": "",
+        "placeholder": "",
+        "submit": ""
+    },
+    "country": {
+        "step": "",
+        "title": "",
+        "placeholder": "",
+        "submit": "",
+        "back": ""
+    },
+    "required": ""
+}

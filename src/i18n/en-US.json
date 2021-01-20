@@ -1,1 +1,17 @@
-{}
+{
+    "email": {
+        "step": "email",
+        "invalid": "please enter a valid email address.",
+        "title": "email",
+        "placeholder": "for example h7.gh@gmail.com",
+        "submit": "submit"
+    },
+    "country": {
+        "step": "country",
+        "title": "country",
+        "placeholder": "type ...",
+        "submit": "submit",
+        "back": "edit email"
+    },
+    "required": "this field is required."
+}
