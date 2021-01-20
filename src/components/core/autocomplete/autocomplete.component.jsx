@@ -13,6 +13,7 @@ const useStyles = makeStyles(theme =>
         container: {
             position: 'relative',
             display: 'flex',
+            width: '100%',
         },
         input: ({ error }) => ({
             padding: theme.spacing(2),
@@ -70,7 +71,9 @@ const useStyles = makeStyles(theme =>
         suggestionHighlighted: {
             backgroundColor: '#ddd',
         },
-        label: {},
+        label: {
+            backgroundColor: theme.palette.background.paper,
+        },
         loadingContainer: {
             height: '30px',
         },
@@ -130,7 +133,7 @@ const Autosuggestion = ({
     };
 
     return (
-        <FormControl variant="outlined" error={error} margin="normal">
+        <FormControl variant="outlined" error={error} margin="normal" fullWidth>
             {label && (
                 <InputLabel className={classes.label} shrink={true} id={`id_${label}`}>
                     {t(label)}
