@@ -45,11 +45,13 @@ const EmailForm = ({ next }) => {
                 label={'email.title'}
                 fullWidth
                 placeholder={'email.placeholder'}
+                type="email"
             />
             <Button
                 size="large"
                 fullWidth
                 variant="contained"
+                color="primary"
                 text="email.submit"
                 onClick={form.submitForm}
                 disabled={form.isSubmitting()}

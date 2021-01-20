@@ -51,6 +51,7 @@ const Stepper = ({ stepLabels, step = 0, children }) => {
                             </Step>
                         ))}
                     </BaseStepper>
+                    <div>{childrenWithProps[activeStep]}</div>
                 </div>
             )}
         </div>
