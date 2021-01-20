@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import { TextInput, Button, useForm } from '../../core';
 import { useTranslation } from 'react-i18next';
 
@@ -9,11 +9,16 @@ const validateEmail = email => {
 
 const EmailForm = ({ next }) => {
     const { t } = useTranslation();
+    const [isSubmited, setIsSubmited] = useState(false);
 
-    const handleSubmit = async values => {
+    useEffect(() => {
+        if (isSubmited) next();
+    }, [isSubmited]);
+
+    const handleSubmit = values => {
         try {
             console.log('email', values.email);
-            next();
+            setIsSubmited(true);
             return {};
         } catch (errors) {
             return {
