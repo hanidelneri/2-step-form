@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React from 'react';
 import { TextInput, Button, useForm } from '../../core';
 import { useTranslation } from 'react-i18next';
 
