@@ -22,9 +22,4 @@ i18n.use(initReactI18next).init({
     },
 });
 
-ReactDOM.render(
-    <React.StrictMode>
-        <App />
-    </React.StrictMode>,
-    document.getElementById('root')
-);
+ReactDOM.render(<App />, document.getElementById('root'));
