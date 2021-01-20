@@ -31,20 +31,13 @@ const EmailForm = ({ back, next }) => {
         validate,
     });
 
-    const getSuggestions = val => {
-        return new Promise((resolve, reject) => {
-            setIsLoading(true);
-            axios
-                .get(`https://restcountries.eu/rest/v2/name/${encodeURIComponent(val)}`)
-                .then(result => {
-                    setIsLoading(false);
-                    resolve(result.data);
-                })
-                .catch(err => {
-                    setIsLoading(false);
-                    reject(err);
-                });
-        });
+    const getSuggestions = async val => {
+        setIsLoading(true);
+        const result = await axios.get(
+            `https://restcountries.eu/rest/v2/name/${encodeURIComponent(val)}`
+        );
+        setIsLoading(false);
+        return result.data;
     };
 
     return (
