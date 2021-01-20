@@ -2,7 +2,7 @@ import { useState, useRef, useCallback, useEffect } from 'react';
 import { hasNonEmptyValue, setNestedObjectValues, setIn, getIn } from './helper';
 
 export function useForm(props) {
-    const [renderCount, setRenderCount] = useState < number > 1;
+    const [renderCount, setRenderCount] = useState(1);
     const rerender = () => {
         setRenderCount(renderCount + 1);
     };

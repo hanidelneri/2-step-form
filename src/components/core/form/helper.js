@@ -1,3 +1,17 @@
+export const isObject = obj => obj !== null && typeof obj === 'object';
+
+export const isInteger = obj => String(Math.floor(Number(obj))) === obj;
+
+export const clone = obj => {
+    if (Array.isArray(obj)) {
+        return [...obj];
+    } else if (isObject(obj)) {
+        return { ...obj };
+    } else {
+        return obj;
+    }
+};
+
 export const hasNonEmptyValue = obj => {
     if (isObject(obj)) {
         if (Array.isArray(obj)) {
@@ -16,6 +30,53 @@ export const hasNonEmptyValue = obj => {
     }
     return false;
 };
+
+export const toPath = key => {
+    const path = [];
+    const parts = key.split('.');
+    parts.forEach(part => {
+        const i1 = part.indexOf('[');
+        if (i1 >= 0) {
+            path.push(part.substring(0, i1));
+            const i2 = part.indexOf(']');
+            if (i2 >= 0) {
+                path.push(part.substring(i1 + 1, i2));
+            } else {
+                // error but ignore
+            }
+        } else {
+            path.push(part);
+        }
+    });
+    return path;
+    /*
+_.toPath('a.b.c');
+// => ['a', 'b', 'c']
+
+_.toPath('a[0].b.c');
+// => ['a', '0', 'b', 'c']
+   */
+};
+
+export function setNestedObjectValues(object, value, visited = new WeakMap(), response = {}) {
+    for (const k of Object.keys(object)) {
+        const val = object[k];
+        if (isObject(val)) {
+            if (!visited.get(val)) {
+                visited.set(val, true);
+                // In order to keep array values consistent for both dot path  and
+                // bracket syntax, we need to check if this is an array so that
+                // this will output  { friends: [true] } and not { friends: { "0": true } }
+                response[k] = Array.isArray(val) ? [] : {};
+                setNestedObjectValues(val, value, visited, response[k]);
+            }
+        } else {
+            response[k] = value;
+        }
+    }
+
+    return response;
+}
 
 export function getIn(obj, key, def, p = 0) {
     const path = Array.isArray(key) ? key : toPath(key);
