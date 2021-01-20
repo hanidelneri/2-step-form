@@ -12,6 +12,7 @@ const useStyles = makeStyles(theme =>
     createStyles({
         container: {
             position: 'relative',
+            display: 'flex',
         },
         input: ({ error }) => ({
             padding: theme.spacing(2),
@@ -26,6 +27,7 @@ const useStyles = makeStyles(theme =>
                     error ? theme.palette.error.main : theme.palette.common.black
                 }`,
             },
+            flexBasis: '100%',
         }),
         inputFocused: ({ error }) => ({
             outline: 'none',
@@ -43,7 +45,7 @@ const useStyles = makeStyles(theme =>
             display: 'block',
             position: 'absolute',
             top: '49px',
-            width: '240px',
+            width: '100%',
             border: `1px solid  ${theme.palette.primary.main}`,
             fontFamily: 'inherit',
             fontWeight: 'inherit',
